@@ -16,6 +16,9 @@
     "db:generate": "bash scripts/sites-env.sh -- drizzle-kit generate"
   },
   "dependencies": {
+    "@fontsource/cormorant-garamond": "^5.3.0",
+    "@fontsource/fraunces": "^5.3.0",
+    "@fontsource/mulish": "^5.3.0",
     "aos": "^2.3.4",
     "drizzle-orm": "0.45.2",
     "next": "16.2.6",
