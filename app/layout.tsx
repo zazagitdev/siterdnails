@@ -38,17 +38,26 @@ export const metadata: Metadata = {
     title: "Renata Dias | Nails Master",
     description:
       "Cuidado para mãos e pés com atendimento personalizado e hora marcada em Jacarepaguá.",
+    siteName: "Renata Dias Nails",
     type: "website",
     locale: "pt_BR",
     url: "/",
     images: [
       {
-        url: "/images/renata-dias-atendimento.jpg",
-        width: 1280,
-        height: 853,
-        alt: "Renata Dias — Nails Master",
+        url: "/og-preview.jpg",
+        width: 1200,
+        height: 630,
+        type: "image/jpeg",
+        alt: "Renata Dias Nails Master — Mais que unhas bonitas: cuidado, técnica e personalidade.",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Renata Dias | Nails Master",
+    description:
+      "Cuidado para mãos e pés com atendimento personalizado e hora marcada em Jacarepaguá.",
+    images: ["/og-preview.jpg"],
   },
   icons: {
     icon: "/images/renata-dias-logo-transparent-2026.png",
