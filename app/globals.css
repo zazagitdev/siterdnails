@@ -1593,7 +1593,7 @@ html.mobile-menu-open body {
 }
 
 .faq-question:hover,
-.faq-item.is-open .faq-question {
+.faq-question[aria-expanded="true"] {
   color: var(--rose-dark);
 }
 
@@ -1628,9 +1628,8 @@ html.mobile-menu-open body {
   color: var(--wine);
 }
 
-.faq-item.is-open .faq-chevron {
+.faq-question[aria-expanded="true"] .faq-chevron {
   color: var(--rose-dark);
-  transform: rotate(180deg);
 }
 
 .faq-answer-shell {
@@ -1638,24 +1637,10 @@ html.mobile-menu-open body {
   opacity: 0;
   overflow: hidden;
   transform: translateY(-7px);
-  visibility: hidden;
   transition:
     max-height 380ms cubic-bezier(0.22, 1, 0.36, 1),
     opacity 230ms ease,
-    transform 380ms cubic-bezier(0.22, 1, 0.36, 1),
-    visibility 0s linear 380ms;
-}
-
-.faq-item.is-open .faq-answer-shell {
-  max-height: 24rem;
-  opacity: 1;
-  transform: translateY(0);
-  visibility: visible;
-  transition:
-    max-height 380ms cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 230ms ease,
-    transform 380ms cubic-bezier(0.22, 1, 0.36, 1),
-    visibility 0s;
+    transform 380ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .faq-answer-inner {
