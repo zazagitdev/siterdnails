@@ -1,4 +1,5 @@
 import ExperienceStats from "./ExperienceStats";
+import FAQAccordion from "./FAQAccordion";
 import HeaderScrollState from "./HeaderScrollState";
 import MobileMenu from "./MobileMenu";
 import SectionNavigation from "./SectionNavigationController";
@@ -35,7 +36,7 @@ function Icon({ name }: { name: IconName }) {
   const paths: Record<IconName, React.ReactNode> = {
     arrow: <><path d="M5 12h13"/><path d="m14 7 5 5-5 5"/></>,
     calendar: <><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></>,
-    "calendar-check": <><rect x="2.5" y="4.5" width="19" height="17" rx="3"/><path d="M2.5 9.5h19M7.5 2.5v4M16.5 2.5v4"/><path d="m7.8 15.1 2.5 2.5 6-6"/></>,
+    "calendar-check": <><path d="M8 2v4M16 2v4"/><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18"/><path d="m9 16 2 2 4-4"/></>,
     check: <path d="m5 12 4.2 4.2L19 7"/>,
     clock: <><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></>,
     depilation: <><path d="M2 16v1.4a3 3 0 0 0 6 0V16M9 16v1.4a3 3 0 0 0 6 0V16M16 16v1.4a3 3 0 0 0 6 0V16"/><path d="M5 16v-4.1c0-3.3.9-6.3 2.8-8.7M12 16v-5.1c0-3.6 1.1-6.5 3.4-8.6M19 16v-4.3c0-3 .8-5.5 2.3-7.5"/><circle cx="5" cy="17.4" r="1" fill="currentColor" stroke="none"/><circle cx="12" cy="17.4" r="1" fill="currentColor" stroke="none"/><circle cx="19" cy="17.4" r="1" fill="currentColor" stroke="none"/></>,
@@ -255,7 +256,7 @@ export default function Home() {
               </div>
               <div className="hero-facts" aria-label="Informações de atendimento">
                 <span><Icon name="calendar-check" /> Quarta a sábado, 10h às 19h</span>
-                <span><Icon name="neighborhood" /> Freguesia de Jacarepaguá</span>
+                <span><Icon name="pin" /> Freguesia de Jacarepaguá</span>
               </div>
             </div>
 
@@ -490,14 +491,7 @@ export default function Home() {
               <p>Não encontrou o que procura? A Renata responde diretamente pelo WhatsApp.</p>
               <a className="text-link" href={whatsapp("Olá, Renata! Vim pelo site e fiquei com uma dúvida sobre o atendimento.")} target="_blank" rel="noreferrer">Tirar uma dúvida <Icon name="arrow" /></a>
             </div>
-            <div className="faq-list">
-              {faqs.map((faq, index) => (
-                <details data-aos="fade-up" data-aos-delay={index * 55} key={faq.question}>
-                  <summary>{faq.question}<span>+</span></summary>
-                  <p>{faq.answer}</p>
-                </details>
-              ))}
-            </div>
+            <FAQAccordion items={faqs} />
           </div>
         </section>
 
