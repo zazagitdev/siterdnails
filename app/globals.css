@@ -1475,6 +1475,8 @@ html.mobile-menu-open body {
 }
 
 .address-line > div {
+  container-type: inline-size;
+  flex: 1;
   min-width: 0;
 }
 
@@ -1492,8 +1494,10 @@ html.mobile-menu-open body {
 
 .address-line h2 {
   color: #6f2f3a;
-  font-size: clamp(1.75rem, 5.7vw, 2.5rem);
+  font-size: clamp(1rem, 3vw, 2.25rem);
+  font-size: clamp(1rem, 10cqi, 2.25rem);
   margin-bottom: 8px;
+  white-space: nowrap;
 }
 
 .address-line p,
@@ -2446,6 +2450,23 @@ footer {
 }
 
 @media (max-width: 430px) {
+  .address-card {
+    min-height: 560px;
+  }
+
+  .address-line {
+    gap: 12px;
+  }
+
+  .address-line p {
+    min-height: 6.8em;
+  }
+
+  .location-icon {
+    height: 42px;
+    width: 42px;
+  }
+
   h1 {
     font-size: 2.48rem;
   }

@@ -531,7 +531,6 @@ export default function Home() {
           <div className="footer-service" data-aos="fade-up" data-aos-delay="140">
             <strong>ATENDIMENTO</strong>
             <p>
-              Quarta a Sábado, 10h às 19h
               <span className="footer-address">R. Araguaia, 1763 — Loja E<br/>Freguesia, Rio de Janeiro — RJ</span>
               <span className="footer-address">Estrada do Tindiba, 332 — Sala 307<br/>Pechincha, Rio de Janeiro — RJ</span>
             </p>
