@@ -17,9 +17,9 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://renatadiasnails.vercel.app"),
   title: "Renata Dias | Nails Master",
   description:
-    "Manicure e pedicure com hora marcada na Freguesia, Jacarepaguá. Atendimento de quarta a sábado, das 10h às 13h e das 14h às 19h. Agende pelo WhatsApp.",
+    "Manicure e pedicure com hora marcada no Pechincha, Jacarepaguá. Atendimento de quarta a sábado, das 10h às 13h e das 14h às 19h. Agende pelo WhatsApp.",
   keywords: [
-    "manicure Freguesia",
+    "manicure Pechincha",
     "pedicure Jacarepaguá",
     "manicure Rio de Janeiro",
     "Renata Dias Nails",
