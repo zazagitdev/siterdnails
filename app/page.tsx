@@ -11,6 +11,21 @@ function whatsapp(message: string) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
 
+const locations = [
+  {
+    neighborhood: "Freguesia, Jacarepaguá",
+    street: "R. Araguaia, 1763 — Loja E",
+    postalCode: "22745-271",
+    mapQuery: "Rua Araguaia, 1763, Loja E, Freguesia (Jacarepaguá), Rio de Janeiro, RJ 22745-271",
+  },
+  {
+    neighborhood: "Pechincha, Jacarepaguá",
+    street: "Estrada do Tindiba, 332 — Sala 307",
+    postalCode: "22740-360",
+    mapQuery: "Estrada do Tindiba, 332, Pechincha, Rio de Janeiro, RJ 22740-360",
+  },
+];
+
 type IconName =
   | "arrow"
   | "calendar"
@@ -140,7 +155,7 @@ const faqs = [
   },
   {
     question: "Onde fica o atendimento?",
-    answer: "Na Estrada do Tindiba, 332, Sala 307, Pechincha, Rio de Janeiro — RJ, CEP 22740-360.",
+    answer: "São dois locais de atendimento: Rua Araguaia, 1763, Loja E, Freguesia (Jacarepaguá), Rio de Janeiro — RJ, CEP 22745-271; e Estrada do Tindiba, 332, Sala 307, Pechincha, Rio de Janeiro — RJ, CEP 22740-360. Confirme o local ao agendar pelo WhatsApp.",
   },
   {
     question: "Quais serviços estão disponíveis?",
@@ -173,14 +188,14 @@ export default function Home() {
     image: "/images/renata-dias-hero-agosto-2026.jpg",
     priceRange: "$$",
     sameAs: ["https://www.instagram.com/renatadiasnails"],
-    address: {
+    address: locations.map((location) => ({
       "@type": "PostalAddress",
-      streetAddress: "Estrada do Tindiba, 332, Sala 307, Pechincha",
+      streetAddress: location.street,
       addressLocality: "Rio de Janeiro",
       addressRegion: "RJ",
-      postalCode: "22740-360",
+      postalCode: location.postalCode,
       addressCountry: "BR",
-    },
+    })),
     openingHoursSpecification: [
       {
         "@type": "OpeningHoursSpecification",
@@ -256,7 +271,7 @@ export default function Home() {
               </div>
               <div className="hero-facts" aria-label="Informações de atendimento">
                 <span><Icon name="calendar-check" /> Quarta a sábado, 10h às 19h</span>
-                <span><Icon name="pin" /> Pechincha, Jacarepaguá</span>
+                <span><Icon name="pin" /> Freguesia e Pechincha, Jacarepaguá</span>
               </div>
             </div>
 
@@ -430,55 +445,43 @@ export default function Home() {
         <section className="section location" id="localizacao">
           <div className="container">
             <div className="location-panels">
-              <article className="hours-card" data-aos="fade-up">
-                <p className="location-kicker"><Icon name="clock" /> Atendimento</p>
-                <h2>Horário de<br/>funcionamento</h2>
-                <p className="service-days">Quarta a Sábado</p>
-                <div className="hours-grid" aria-label="Quarta a Sábado — Manhã: 10h às 13h e Tarde: 14h às 19h">
-                  <div>
-                    <strong>10h às 13h</strong>
-                    <span>Manhã</span>
-                  </div>
-                  <div>
-                    <strong>14h às 19h</strong>
-                    <span>Tarde</span>
-                  </div>
-                </div>
-              </article>
-
-              <article className="address-card" data-aos="fade-up" data-aos-delay="120">
+              {locations.map((location, index) => (
+              <div className="location-site" key={location.postalCode}>
+              <article className="address-card" data-aos="fade-up" data-aos-delay={index * 120}>
                 <p className="location-kicker">Onde encontrar</p>
                 <div className="address-line">
                   <span className="location-icon"><Icon name="pin" /></span>
                   <div>
-                    <h2>Pechincha, Jacarepaguá</h2>
-                    <p>Estrada do Tindiba, 332 — Sala 307<br/>Rio de Janeiro — RJ, CEP 22740-360</p>
+                    <h2>{location.neighborhood}</h2>
+                    <p>{location.street}<br/>Rio de Janeiro — RJ, CEP {location.postalCode}</p>
                   </div>
                 </div>
-                <p className="address-note">O agendamento é feito diretamente pelo WhatsApp. Chame a Renata e encontre o melhor horário para você.</p>
+                <p className="address-note">O agendamento é feito diretamente pelo WhatsApp. Confirme com a Renata o local e o melhor horário para você.</p>
                 <div className="location-actions">
                   <a className="button button-primary" href={generalWhatsapp} target="_blank" rel="noreferrer"><Icon name="whatsapp" /> Agendar pelo WhatsApp</a>
                   <a className="button button-outline" href="https://www.instagram.com/renatadiasnails" target="_blank" rel="noreferrer"><Icon name="instagram" /> Seguir no Instagram</a>
                 </div>
               </article>
-            </div>
 
             <div className="map-wrap" data-aos="fade-up">
               <iframe
-                title="Localização da Renata Dias — Nails Master na Estrada do Tindiba, 332, Pechincha — Sala 307"
-                src="https://maps.google.com/maps?hl=pt-BR&q=Estrada%20do%20Tindiba%2C%20332%2C%20Pechincha%2C%20Rio%20de%20Janeiro%2C%20RJ%2022740-360&z=18&t=m&output=embed"
+                title={`Localização da Renata Dias — ${location.street}, ${location.neighborhood}`}
+                src={`https://maps.google.com/maps?hl=pt-BR&q=${encodeURIComponent(location.mapQuery)}&z=18&t=m&output=embed`}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 allowFullScreen
               />
               <a
                 className="button map-action"
-                href="https://www.google.com/maps/search/?api=1&query=Estrada%20do%20Tindiba%2C%20332%2C%20Pechincha%2C%20Rio%20de%20Janeiro%20RJ%2022740-360"
+                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location.mapQuery)}`}
                 target="_blank"
                 rel="noreferrer"
               >
                 <Icon name="pin" /> Abrir no Google Maps
               </a>
+            </div>
+              </div>
+              ))}
             </div>
           </div>
         </section>
@@ -529,6 +532,7 @@ export default function Home() {
             <strong>ATENDIMENTO</strong>
             <p>
               Quarta a Sábado, 10h às 19h
+              <span className="footer-address">R. Araguaia, 1763 — Loja E<br/>Freguesia, Rio de Janeiro — RJ</span>
               <span className="footer-address">Estrada do Tindiba, 332 — Sala 307<br/>Pechincha, Rio de Janeiro — RJ</span>
             </p>
           </div>

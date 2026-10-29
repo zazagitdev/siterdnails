@@ -1363,6 +1363,10 @@ html.mobile-menu-open body {
   gap: 22px;
 }
 
+.location-site {
+  min-width: 0;
+}
+
 .hours-card,
 .address-card,
 .map-wrap {
